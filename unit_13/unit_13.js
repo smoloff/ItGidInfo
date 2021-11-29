@@ -8,11 +8,13 @@ function f1() {
         "two": 16,
         "five": 20
     };
-    document.querySelector('.out-1').innerHTML = a1.two;
-    //return ...
+ 
+    return a1.two;
 }
 
-document.querySelector('.b-1').onclick = f1;
+document.querySelector('.b-1').onclick = () => {
+    document.querySelector('.out-1').innerHTML = f1();
+}
 
 
 // Task 2
@@ -26,7 +28,7 @@ function f2() {
         "two": "mahai",
         "five": "hi"
     };
-    return a2.five
+    return a2.five;
 }
 
 document.querySelector('.b-2').onclick = () => {
@@ -48,11 +50,8 @@ function f3() {
         "odd": "hi",
         "mix": "mix"
     };
-    for (let key in a3) {
-        if (a3[key] == 'hi') {
-            return 'hi'
-        }
-    }
+    
+    return a3.five;
 }
 
 document.querySelector('.b-3').onclick = () => {
@@ -75,10 +74,9 @@ let a4 = {
 };
 function f4() {
     let out = '';
-    console.log(out);
 
     for (let key in a4) {
-        out += `${key} ${a4[key]}<br>`;
+        out += `${key} ${a4[key]} <br>`;
     }
     return out;
 }
@@ -93,8 +91,8 @@ document.querySelector('.b-4').onclick = () => {
 
 function f5(arr, block) {
     let out = '';
-    for (key in arr) {
-        out += `${key}: ${arr[key]}<br>`
+    for (let key in arr) {
+        out += `${key}: ${arr[key]} <br>`;
     }
     document.querySelector(block).innerHTML = out;
 }
@@ -107,7 +105,7 @@ document.querySelector('.b-5').onclick = () => {
         "two": 2
     }
     f5(a5, '.out-5');
-}
+};
 
 
 // Task 6
@@ -149,7 +147,7 @@ function f7() {
         }
     }
 
-    toOut('.out-7', out)
+    toOut('.out-7', out);
 
 }
 
@@ -168,7 +166,7 @@ function f8() {
     let out = 0;
     for (let key in a8) {
         if (k == key) {
-            out = 1;
+            out = a8[key];
         }
     }
 
@@ -223,7 +221,7 @@ document.querySelector('.b-10').onclick = () => {
         "k": 22,
         "d": 54,
         "m": 22,
-    }
+    };
     let out = f10(a10, 22);
 
     toOut('.out-10', out);
