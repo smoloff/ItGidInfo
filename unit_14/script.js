@@ -1,13 +1,28 @@
-fetch('http://api.openweathermap.org/data/2.5/weather?id=703448&appid=70e1ed322b02acbc57d443dd91065f3e')
-    .then(function (resp) { return resp.json() })
-    .then(function (data) {
-        console.log(data);
-        document.querySelector('.package-name').textContent = data.name;
-        document.querySelector('.price').innerHTML = Math.round(data.main.temp - 273) + '&deg;';
-        document.querySelector('.disclaimer').textContent = data.weather[0]['description'];
-        //https://openweathermap.org/img/wn/02d@2x.png
-        document.querySelector('.features li').innerHTML = `<img src="https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png">`;
-    })
-    .catch(function () {
-        // catch any errors
+let apid = 'f010616987a0390eeaa3d9f4fdf24eac';
+
+//ввод текста в инпут
+// let input = document.querySelector('.form-control input');
+// input.addEventListener('keydown', function () {
+//     console.log(input.value);
+// });
+
+let selectedCity = 703448;
+let fetched = `http://api.openweathermap.org/data/2.5/weather?id=${selectedCity}&appid=${apid}`;
+
+document.querySelector('#city')
+    .addEventListener('click', function () {
+        fetched = `http://api.openweathermap.org/data/2.5/weather?id=${this.value}&appid=${apid}`;
+        getResp(fetched);
     });
+
+function getResp(fetched) {
+    fetch(fetched)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+        });
+
+}
+
