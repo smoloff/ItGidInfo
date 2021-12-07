@@ -10,19 +10,24 @@ let selectedCity = 703448;
 let fetched = `http://api.openweathermap.org/data/2.5/weather?id=${selectedCity}&appid=${apid}`;
 
 document.querySelector('#city')
-    .addEventListener('click', function () {
-        fetched = `http://api.openweathermap.org/data/2.5/weather?id=${this.value}&appid=${apid}`;
-        getResp(fetched);
+    .addEventListener('change', function () {
+        let city = document.querySelector('#city').value;
+        fetched = `http://api.openweathermap.org/data/2.5/weather?id=${city}&appid=${apid}&units=metric`;
+        getResponse (fetched);
     });
 
-function getResp(fetched) {
+function getResponse (fetched) {
     fetch(fetched)
-        .then((response) => {
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data);
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('#inCity').innerHTML = data.name;
+            document.querySelector('#Celsius').innerHTML = `${Math.round(data.main.temp)} &#8451`;
+            document.querySelector('.disclaimer').innerHTML = data.weather[0].description;
+            document.querySelector('.features li').innerHTML = `http://openweathermap.org/img/w/${data.weather[0].icon}.png`
+            console.log(data.weather);
+            
         });
+
 
 }
 
