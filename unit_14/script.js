@@ -29,10 +29,16 @@ getResponse(fetched)
 
 let weatherButton = document.querySelector('#five_days_weather')
 .addEventListener("click", function() {
- fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apid}&lang=ua&units=metric`)
+ fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${cityName}&cnt=7&appid=${apid}&lang=ua&units=metric`)
  .then(response => response.json())
- .then (data => {
-     console.log(data)
+ .then (data => {  
+    console.log(data)
+
+
+        //  for(let i = 0; i == 6; i++ ) {
+        //     console.log(data.list[i])
+        //  }
+     
  })
 })
 
