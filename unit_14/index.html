@@ -20,20 +20,18 @@
             </div>
         </div>
 
-        <select name="select" id='city'> 
+        <select name="select" id='city'>
         </select>
 
         <div class="pricing-table row">
             <div class="package featured">
-                <p class="package-name" id="inCity">Kiev</p>
-                <hr>
-                <p class="price" id="Celsius">10&deg;</p>
-                <p class="disclaimer">Clouds</p>
-                <hr>
                 <ul class="features">
-                    <li>Feature 1</li>
+                    <li class='flex'> <span id="icon"></span> <span id="Celsius"></span> </li>
+                    <li class="clouds"></li>
+                    <li>Відчувається як: <span id="feels_like"></span>&deg;C</li>
+                    <li>Вологість: <span id="humidity"></span> %</li>
                 </ul>
-                <button class="button-primary">Go</button>
+                <button class="button-primary" id="five_days_weather">Прогноз на тиждень</button>
             </div>
         </div>
 

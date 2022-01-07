@@ -1,3 +1,17 @@
+p {
+    font-family: Arial, Helvetica, sans-serif;
+}
 .text-center {
     text-align: center;
+}
+.flex {
+    display: flex; 
+    justify-content: space-between;
+}
+#Celsius {
+    font-size: 40px;
+    line-height: 80px;
+}
+#icon {
+    margin-top: 0px;
 }
