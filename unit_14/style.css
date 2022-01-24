@@ -2,53 +2,82 @@ body {
     width: 1000px;
     margin: auto;
 }
+
 p {
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .features {
     display: flex;
     justify-content: space-between;
     list-style: none;
 }
-.gray-text{
+
+.gray-text {
     font-size: 13px;
     color: rgb(109, 108, 108);
-    line-height:80%
+    line-height: 80%
 }
+
 li {
     height: auto;
     line-height: 18px;
     list-style: none;
 }
+
 .text-center {
     text-align: center;
 }
+
 .flex {
-    display: flex; 
+    display: flex;
     justify-content: space-around;
 }
+
 #Celsius {
     font-size: 60px;
     line-height: 60px;
     font-weight: 200;
 }
+
 .deg {
     font-weight: normal;
-font-size: 80%;
-/* line-height: 5px; */
+    font-size: 80%;
 }
+
 #icon {
-    /* margin-top: -15%; */
     margin: auto;
 }
 
 .two_column {
-display: grid;
-grid-template-columns: 1fr 1fr;
-justify-items:stretch;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
 }
 
 .weather_table {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+}
+
+.hourly {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08);
+}
+
+.daily {
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.08);
+    /* height: 100px; */
+}
+
+
+.daily li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: column;
+    width: 70px;
 }
