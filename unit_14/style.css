@@ -5,19 +5,41 @@ body {
 p {
     font-family: Arial, Helvetica, sans-serif;
 }
+.features {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+.gray-text{
+    font-size: 13px;
+    color: rgb(109, 108, 108);
+    line-height:80%
+}
+li {
+    height: auto;
+    line-height: 18px;
+    list-style: none;
+}
 .text-center {
     text-align: center;
 }
 .flex {
     display: flex; 
-    justify-content: space-between;
+    justify-content: space-around;
 }
 #Celsius {
-    font-size: 40px;
-    line-height: 80px;
+    font-size: 60px;
+    line-height: 60px;
+    font-weight: 200;
+}
+.deg {
+    font-weight: normal;
+font-size: 80%;
+/* line-height: 5px; */
 }
 #icon {
-    margin-top: 0px;
+    /* margin-top: -15%; */
+    margin: auto;
 }
 
 .two_column {

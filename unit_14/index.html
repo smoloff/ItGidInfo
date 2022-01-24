@@ -27,22 +27,30 @@
         </select>
     </section>
 
-    <section class="two_column">
-        <div class="pricing-table row">
-            <div class="package featured">
-                <ul class="features">
-                    <li class='flex'> <span id="icon"></span> <span id="Celsius"></span> </li>
-                    <li class="clouds"></li>
-                    <li>Відчувається як: <span id="feels_like"></span>&deg;C</li>
-                    <li>Вологість: <span id="humidity"></span> %</li>
+    <section>
+        <ul class="features">            
+            <li class="flex" >
+                <ul>
+                    <li class='flex' style='padding-right: 20px;'> <i id="icon"></i> <span id="Celsius"></span><b class='deg'>&deg;C</b></li>
                 </ul>
-                <button class="button-primary" id="five_days_weather">Прогноз на тиждень</button>
-            </div>
-        </div>
+                <ul class='gray-text'>
+                    <li>Відчувається як: <span id="feels_like"></span>&deg;C</li>
+                    <li>Вологість: <span id="humidity"></span>%</li>
+                    <li>Вітер: <span id="wind"></span> км/г</li>
+                </ul>
+            </li>
+            <li>
+                <ul>
+                    <li> <i class='date'></i> </li>
+                    <li><span class="clouds"></span></li>
+                </ul>
+            </li>
+        </ul>
 
-        <div class="weather_table">
+        <ul class='hourly flex'></ul>
+        
+        <button class="button-primary" id="five_days_weather">Прогноз на тиждень</button>
 
-        </div>
     </section>
 
 
