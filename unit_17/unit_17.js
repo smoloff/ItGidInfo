@@ -35,7 +35,10 @@ document.querySelector('.b-1').onclick = () => {
 let a2 = [2, 3, 4, 5, 10, 11, 12];
 
 function t2() {
-
+    let a2_res = a2.map(item => {
+        return item * item;
+    })
+    return a2_res
 }
 
 document.querySelector('.b-2').onclick = () => {
@@ -50,7 +53,10 @@ document.querySelector('.b-2').onclick = () => {
 let a3 = [4, "3", 6, 7, "12", 34, "56", 78, 90, 11];
 
 function t3() {
-
+    let a3_res = a3.map(item => {
+        return +item
+    })
+    return a3_res
 }
 
 document.querySelector('.b-3').onclick = () => {
@@ -64,6 +70,13 @@ document.querySelector('.b-3').onclick = () => {
 let a4 = [4, "3", 6, 7, "12", 34, "56", 78, 90, 11];
 
 function t4() {
+
+    let a4_res = a4.filter(item => {
+        if (typeof item === "number") {
+            return true
+        }
+    })
+    return a4_res
 
 }
 
@@ -79,7 +92,13 @@ document.querySelector('.b-4').onclick = () => {
 let a5 = [3, 14, 15, 92, '6'];
 
 function t5() {
-
+    let a5_res = a5.filter(item => {
+        console
+        if (item % 2 == 0 && typeof item === "number") {
+            return true
+        }
+    })
+    return a5_res
 }
 
 document.querySelector('.b-5').onclick = () => {
@@ -94,6 +113,12 @@ document.querySelector('.b-5').onclick = () => {
 let a6 = [3, 14, 15, 92, "6", "5", "hello", 32];
 
 function t6() {
+    let a6_res = a6.filter(el => {
+        if (el > 14) {
+            return true
+        }
+    })
+    return a6_res
 
 }
 
@@ -109,6 +134,10 @@ let a7 = ['Alto`s Adventure', 'Angry Birds 2', 'Anno 2205', 'Assassin`s Creed Ch
 
 function t7() {
 
+    let a7_res = a7.map(el => {
+        return el.toLowerCase()
+    })
+    return a7_res
 }
 
 document.querySelector('.b-7').onclick = () => {
@@ -122,6 +151,13 @@ let a8 = [3, 14, 15, 92, 7, 32, 59];
 
 function t8() {
 
+    let a8_res = new Array();
+    a8.map((item, index) => {
+        if (item % 2 == 0) {
+            a8_res.push(index)
+        }
+    })
+    return a8_res;
 }
 
 document.querySelector('.b-8').onclick = () => {
@@ -136,7 +172,11 @@ document.querySelector('.b-8').onclick = () => {
 let a9 = ['Quantum Break', 'Gears of War 4', 'Mass Effect: Andromeda', 'Far Cry Primal'];
 
 function t9() {
-
+    let a9_res = new Array();
+    a9.forEach(el => {
+        a9_res.push(el.toLocaleLowerCase())
+    })
+    return a9_res;
 }
 
 document.querySelector('.b-9').onclick = () => {
@@ -152,7 +192,12 @@ let a10 = [2, 13, 14, -7, 9, 5, 0, -2, 14];
 
 function t10() {
 
-
+let a10_res = new Array();
+a10.forEach(el => {
+    if (el < 0) el = 0; 
+    a10_res.push(el)
+})
+return a10_res
 }
 
 document.querySelector('.b-10').onclick = () => {
@@ -166,6 +211,14 @@ let a11 = [2, 13, 14, -7, 9, 5, 0, -2, 14];
 
 function t11() {
 
+    let a11_res = new Array();
+
+    a11_res = a11.filter((element, index) => {
+        if (index % 2 == 0 && index > 0) {
+            return true
+        }
+    })
+    return a11_res;
 
 }
 
@@ -177,11 +230,12 @@ document.querySelector('.b-11').onclick = () => {
 /*  Данa переменная a12 = [2, 13, 14, -7, 9, 5, 0, -2, 14]. С помощью метода Array.isArray определите является ли переменная a12 массивом. Если да - то функция возврaщает true, если нет false.*/
 
 let a12 = [2, 13, 14, -7, 9, 5, 0, -2, 14];
-// a12 = 8; // на этой переменной можно проверить работает или нет ваша функция.
+// a12 = 8; 
+// на этой переменной можно проверить работает или нет ваша функция.
 
 function t12() {
 
-
+   return Array.isArray(a12)
 }
 
 document.querySelector('.b-12').onclick = () => {
@@ -197,7 +251,7 @@ let a13_num = 9;
 
 function t13() {
 
-
+return (a13.includes(a13_num))
 }
 
 document.querySelector('.b-13').onclick = () => {
@@ -213,7 +267,7 @@ let a14_sym = 'e';
 
 function t14() {
 
-
+return ( a14.includes(a14_sym))
 }
 
 document.querySelector('.b-14').onclick = () => {
@@ -258,7 +312,13 @@ let a15 = [
 
 function t15() {
 
+let a15_res = new Array();
 
+a15_res = a15.filter(el => {
+    if (el.pnum.length == 6 ) return true;
+})
+
+return a15_res;
 }
 
 document.querySelector('.b-15').onclick = () => {
