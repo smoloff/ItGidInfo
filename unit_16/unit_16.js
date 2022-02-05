@@ -25,9 +25,10 @@ function f2() {
 
     let str = '';
     for (let i in a2) {
-        console.log(i, a2[i])
+        str += `${i} ${a2[i]} `;
     }
 
+    toOut(2, str)
 }
 
 document.querySelector('.b-2').addEventListener('click', f2);
@@ -84,8 +85,12 @@ document.querySelector('.b-5').addEventListener('click', () => {
 let a6 = [[1, 2], [3, 4], [5, 6]];
 
 function f6() {
+    let str = '';
     a6 = a6.flat();
-    toOut(6, a6);
+     a6.forEach(el => {
+         str += `${el} `
+     })   
+    toOut(6, str);
 
 }
 
@@ -156,8 +161,8 @@ let a10 = [4, 6, 9, 'Hello'];
 let obj10 = new Object();
 
 function f10() {
-    for (let i = 0; i < a10.length; i += 2) {
-        obj10[a10[i]] = a10[i + 1];
+    for (let i = 0; i < a10.length; i++) {
+        obj10[a10[i]] = a10[i];
     }
     return obj10
 }

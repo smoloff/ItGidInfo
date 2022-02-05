@@ -114,7 +114,7 @@ let a6 = [3, 14, 15, 92, "6", "5", "hello", 32];
 
 function t6() {
     let a6_res = a6.filter(el => {
-        if (el > 14) {
+        if ( typeof el === "number" && el > 14) {
             return true
         }
     })
@@ -214,7 +214,7 @@ function t11() {
     let a11_res = new Array();
 
     a11_res = a11.filter((element, index) => {
-        if (index % 2 == 0 && index > 0) {
+        if (index % 2 == 0) {
             return true
         }
     })
