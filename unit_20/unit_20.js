@@ -74,14 +74,12 @@ i5.onkeydown = t5;
 let i6 = document.querySelector('.i-6');
 let str3 = '';
 function t6(event) {
-    if (event.key === event.key.toLowerCase()){
+    if (event.key === event.key.toLowerCase()) {
         str += event.key;
         i6.value = str;
         console.log(i6.value)
-    } else {
-    return false;
-
     }
+    return false;
 }
 
 i6.onkeypress = t6;
@@ -90,17 +88,22 @@ i6.onkeypress = t6;
 // Task 7 ============================================
 /*  Дан input .i-7. Напишите функцию t7, которая выводит в .out-7 случаный символ из массива a7 при каждом вводе символа. */
 
+let i7 = document.querySelector('.i-7');
 const a7 = ['a', 'z', 'x', 'w', 'y', 't'];
+str = '';
 
 function t7() {
+    index = Math.floor(Math.random() * a7.length);
+    i7.value += a7[index];
 
+    return false
 }
 
-document.querySelector('.i-7').onkeydown = t7;
+i7.onkeydown = t7;
 
 // Task 8 ============================================
 /*  Дан input .i-8. Напишите функцию t8, которая дописывает в .out-8 вводимый в input текст, но заменяет i на 1, o на 0, l на 7. */
-
+let i8 = document.querySelector('.i-8')
 const a8 = {
     i: 1,
     o: 0,
@@ -108,22 +111,40 @@ const a8 = {
 }
 
 function t8(event) {
-    // 1. Получаем из event введенный символ
-    // 2. Проверяем наличие такого ключа в a8 - уже делали это раньше!!!!
-    // 3. Если есть дописываем в out-8 символ из массива a8. Если нет - введенный символ.
+    let key = event.key;
+
+    if (a8[key] !== undefined) {
+        i8.value += a8[key]
+    } else {
+        i8.value += key;
+    }
+
+    return false;
 }
 
-document.querySelector('.i-8').onkeydown = t8;
+i8.onkeydown = t8;
+
+// 1. Получаем из event введенный символ
+// 2. Проверяем наличие такого ключа в a8 - уже делали это раньше!!!!
+// 3. Если есть дописываем в out-8 символ из массива a8. Если нет - введенный символ.
+
+
 
 
 // Task 9 ============================================
 /* Дан input .i-9. Напишите функцию t9, выводит в .out-9 количество (число) нажатых клавиш стрелка вниз. */
+let i9 = document.querySelector('.i-9')
+let count = 0;
 
 function t9(event) {
-    console.log(event);
+    console.log(event.keyCode)
+    if (event.keyCode == 40) {
+        count++;
+    }
+    toOut(9, count)
 }
 
-document.querySelector('.i-9').onkeydown = t9;
+i9.onkeydown = t9;
 
 
 // Task 10 ============================================
@@ -131,8 +152,20 @@ document.querySelector('.i-9').onkeydown = t9;
 
 let h = 75;
 let w = 75;
+let block10 = document.querySelector('.block-10')
 
 function t10(event) {
+    let x = event.keyCode;
+    if (x == 40 || x == 38) {
+        h++;
+        block10.style.height = `${h}px`;
+
+
+    } else if (x == 39 || x == 37) {
+        w++;
+        block10.style.width = `${w}px`;
+
+    }
     // увеличиваем  h, w, потом присваиваем как свойства...
 
 }
@@ -147,11 +180,13 @@ document.querySelector('.i-10').onkeydown = t10;
 4. Самостоятельно добавьте все цифры и второй ряд клавиш от a до l
 5. Самостоятельно добавьте клавишу alt, enter.
 */
+let i11 = document.querySelector('.i-11');
+let keyboard = document.querySelectorAll('.keyboard')
 
 function t11(event) {
+    console.log(keyboard)
     console.log(event.key);
-
 }
 
-document.querySelector('.i-11').onkeydown = t11;
+i11.onkeydown = t11;
 

@@ -18,8 +18,17 @@ section {
 .out-11 {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    align-items:center
+    /* flex-direction: column; */
 
 }
+/* .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+} */
 
 .keyboard {
     width: 48px;
