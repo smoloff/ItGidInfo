@@ -42,16 +42,16 @@ document.querySelector('.i-3').onkeypress = t3;
 // Task 4 ============================================
 /*  Дан input .i-4. Напишите функцию t4, которая выводит в .out-4 только символы в нижнем регистре. Т.е. ввели ab4Bci в out-4 получаем ab4ci. */
 let i4 = document.querySelector('.i-4');
-let str = ''
+let str4 = ''
 function t4(event) {
 
     if (event.keyCode >= 65 && event.keyCode <= 90) {
         return false
     } else {
-        str += event.key
+        str4 += event.key
     }
 
-    toOut(4, str)
+    toOut(4, str4)
 
 }
 
@@ -90,13 +90,12 @@ i6.onkeypress = t6;
 
 let i7 = document.querySelector('.i-7');
 const a7 = ['a', 'z', 'x', 'w', 'y', 't'];
-str = '';
+let str7 = '';
 
 function t7() {
     index = Math.floor(Math.random() * a7.length);
-    i7.value += a7[index];
-
-    return false
+    str7 += a7[index];
+toOut(7, str7)
 }
 
 i7.onkeydown = t7;
@@ -104,6 +103,7 @@ i7.onkeydown = t7;
 // Task 8 ============================================
 /*  Дан input .i-8. Напишите функцию t8, которая дописывает в .out-8 вводимый в input текст, но заменяет i на 1, o на 0, l на 7. */
 let i8 = document.querySelector('.i-8')
+let str8 = '';
 const a8 = {
     i: 1,
     o: 0,
@@ -114,12 +114,11 @@ function t8(event) {
     let key = event.key;
 
     if (a8[key] !== undefined) {
-        i8.value += a8[key]
+        str8 += a8[key]
     } else {
-        i8.value += key;
+        str8 += key;
     }
-
-    return false;
+    toOut(8, str8)
 }
 
 i8.onkeydown = t8;
@@ -152,7 +151,7 @@ i9.onkeydown = t9;
 
 let h = 75;
 let w = 75;
-let block10 = document.querySelector('.block-10')
+let block10 = document.querySelector('.block-10');
 
 function t10(event) {
     let x = event.keyCode;
@@ -184,8 +183,22 @@ let i11 = document.querySelector('.i-11');
 let keyboard = document.querySelectorAll('.keyboard')
 
 function t11(event) {
-    console.log(keyboard)
-    console.log(event.key);
+
+    // console.log(event.key);
+
+    keyboard.forEach(el => {
+        if (el.classList.contains('active')) {
+            el.classList.remove('active')
+        }
+    });
+
+    keyboard.forEach(el => {
+        if (el.attributes.data.value == event.key) {
+            el.classList.add('active');
+        }
+
+    })
+
 }
 
 i11.onkeydown = t11;
