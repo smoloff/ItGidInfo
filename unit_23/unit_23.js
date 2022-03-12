@@ -69,28 +69,41 @@ b5.onclick = t5;
 /*  Создайте функцию t6 которая очищает весь LS. Запуск по кнопке b-6*/
 
 function t6() {
+    localStorage.clear()
 
 }
-
+let b6 = document.querySelector('.b-6');
+b6.onclick = t6;
 // ваше событие здесь!!!
 
 
 // Task 7 ============================================
 /*  Создайте input i-7 куда пользователь может вводить числа и строки. Создайте массив a7. Когда пользователь нажимает кнопку b-7 число должно добавляться в массив. Массив должен сохраняться в LS с ключем a7.*/
 
+let i7 = document.querySelector('.i-7');
+let a7 = [];
+
 function t7() {
-
+    a7.push(i7.value);
+    i7.value = null; // clear input
+    localStorage.setItem('a7', JSON.stringify(a7))
 }
-
-// ваше событие здесь!!!
+let b7 = document.querySelector('.b-7');
+b7.onclick = t7;
 
 // Task 8 ============================================
 /*   Создайте функцию t8 при запуске которой из a7 удаляется последний элемент. После чего массив сохраняется в LS с ключем a7. Использовать массив из предыдущего задания. */
 
-function t8() {
 
+
+function t8() {
+    a7.pop();
+    console.log(a7)
+    localStorage.setItem('a7', JSON.stringify(a7));
 }
 
-// ваше событие здесь!!!
+let b8 = document.querySelector('.b-8');
+b8.onclick = t8
+
 
 
