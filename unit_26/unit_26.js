@@ -1,38 +1,96 @@
+let www = 'http://getpost.itgid.info/index2.php';
 
+let authKey = 'auth=7859d9d42a8834141d529577207c9596';
+
+function buttonActivate(x, y) {
+    let bx = document.querySelector(`.b-${x}`);
+    bx.addEventListener('click', y);
+}
+
+// преобразование обьекта и ключа авторизации в query строку
+function objToStr(obj) {
+    let str = `?${authKey}&`;
+    str += new URLSearchParams(obj).toString();
+    str = `${www}${str}`;
+    return str;
+}
+
+function toOut (num, str) {
+  let out =  document.querySelector(`.out-${num}`);
+  out.innerHTML = str;
+}
+
+function toFetchAndOut (query, output) {
+    let request = objToStr(query)
+    fetch (request)
+    .then (data => {
+        return data.text();
+    })
+    .then(data => toOut(output, data))
+
+}
 // Task 1 ============================================
 /* Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Выведите в out-1 результат. Запускаться функция должна по нажатию b-1. */
 
 function t1() {
+    let query = {
+        action: 1,
+    }
+
+    toFetchAndOut (query, 1);      
+
 }
 
-// ваше событие здесь!!!
+buttonActivate(1, t1);
 
 // Task 2 ============================================
 /* Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 2. Добавьте параметр name с вашим именем на латинице. Если все сделано верно, сервер пришлет строку hello ваше имя. Выведите в out-2 результат. Запускаться функция должна по нажатию b-2. */
 
 function t2() {
+    let query = {
+        action: 2,
+        name: 'pavlo'
+    }
 
+    toFetchAndOut (query, 2);   
 }
 
-// ваше событие здесь!!!
+buttonActivate(2, t2);
+
 
 
 // Task 3 ============================================
 /*  Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 3. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет сумму чисел.  Выведите в out-3 результат. Запускаться функция должна по нажатию b-3. */
 
 function t3() {
+    let query = {
+        action: 3,
+        num1: 2,
+        num2: 7
+    }
 
+    toFetchAndOut (query, 3); 
 }
 
-// ваше событие здесь!!!
+buttonActivate(3, t3);
+
 
 
 // Task 4 ============================================
 /*  Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 4. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет случайное число в заданном диапазоне. Не забывайте указывать параметр auth (ключ в чате).  Выведите в out-4 результат. Запускаться функция должна по нажатию b-4. */
 
 function t4() {
+    let query = {
+        action: 4,
+        num1: 10,
+        num2: 5
+    }
+
+    toFetchAndOut(query, 4)
 
 }
+
+buttonActivate(4, t4);
 
 // ваше событие здесь!!!
 
@@ -40,8 +98,14 @@ function t4() {
 /*  Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 5. Если все сделано верно, сервер вернет текущее время и дату. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-5 результат. Запускаться функция должна по нажатию b-5. */
 
 function t5() {
+    let query = {
+        action: 5
+    }
 
+    toFetchAndOut(query, 5);
 }
+
+buttonActivate(5, t5)
 
 // ваше событие здесь!!!
 
@@ -49,10 +113,16 @@ function t5() {
 /*  Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 6. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет большее число. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-6 результат. Запускаться функция должна по нажатию b-6. */
 
 function t6() {
+    let query = {
+        action: 6, 
+        num1: 5,
+        num2: 15
+    }
 
+    toFetchAndOut(query, 6);
 }
 
-// ваше событие здесь!!!
+buttonActivate(6, t6)
 
 
 // Task 7 ============================================
