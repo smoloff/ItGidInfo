@@ -15,19 +15,33 @@ function objToStr(obj) {
     return str;
 }
 
-function toOut (num, str) {
-  let out =  document.querySelector(`.out-${num}`);
-  out.innerHTML = str;
+function toOut(num, str) {
+    let out = document.querySelector(`.out-${num}`);
+    out.innerHTML = str;
 }
 
-function toFetchAndOut (query, output) {
+function toFetchAndOut(query, output) {
     let request = objToStr(query)
-    fetch (request)
-    .then (data => {
-        return data.text();
-    })
-    .then(data => toOut(output, data))
+    fetch(request)
+        .then(data => {
+            return data.text();
+        })
+        .then(data => toOut(output, data))
+}
 
+function toFetchPostandOut(query, output) {
+    let request = objToStr(query).slice(1);
+    console.log(request)
+    fetch(www, {
+        method: 'POST',
+        headers: {
+            //   'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `${authKey}&action=1`
+    })
+        .then(data => data.text())
+        .then(data => toOut(output, data))
 }
 // Task 1 ============================================
 /* Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Выведите в out-1 результат. Запускаться функция должна по нажатию b-1. */
@@ -37,7 +51,7 @@ function t1() {
         action: 1,
     }
 
-    toFetchAndOut (query, 1);      
+    toFetchAndOut(query, 1);
 
 }
 
@@ -52,7 +66,7 @@ function t2() {
         name: 'pavlo'
     }
 
-    toFetchAndOut (query, 2);   
+    toFetchAndOut(query, 2);
 }
 
 buttonActivate(2, t2);
@@ -69,7 +83,7 @@ function t3() {
         num2: 7
     }
 
-    toFetchAndOut (query, 3); 
+    toFetchAndOut(query, 3);
 }
 
 buttonActivate(3, t3);
@@ -114,7 +128,7 @@ buttonActivate(5, t5)
 
 function t6() {
     let query = {
-        action: 6, 
+        action: 6,
         num1: 5,
         num2: 15
     }
@@ -129,19 +143,31 @@ buttonActivate(6, t6)
 /*  Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 7. Если все сделано верно, сервер случайную ссылку на изображение. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-7 результат. Запускаться функция должна по нажатию b-7. */
 
 function t7() {
+    let query = {
+        action: 7
+    }
+
+    toFetchAndOut(query, 7)
 
 }
 
-// ваше событие здесь!!!
+buttonActivate(7, t7)
+
 
 // Task 8 ============================================
 /* Отправьте GET запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 8. В качестве параметра по очереди укажите year равный году вашего рождения. Если все правильно сервер вернет ваш возраст. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-8 результат. Запускаться функция должна по нажатию b-8.*/
 
 function t8() {
+    let query = {
+        action: 8,
+        year: 2014
+    }
+
+    toFetchAndOut(query, 8)
 
 }
 
-// ваше событие здесь!!!
+buttonActivate(8, t8)
 
 
 // Task 9 ============================================
@@ -149,10 +175,18 @@ function t8() {
 
 function t9() {
 
+    let query = {
+        action: 9,
+        m: 1,
+        d: 1,
+        y: 1
+    }
+
+    toFetchAndOut(query, 9)
+
 }
 
-// ваше событие здесь!!!
-
+buttonActivate(9, t9)
 
 // Task 10 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 1. Если все сделано верно, сервер пришлет строку hello. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-10 результат. Запускаться функция должна по нажатию b-10.
@@ -160,8 +194,15 @@ function t9() {
 */
 
 function t10() {
+    let query = {
+        action: 1
+    }
 
+    toFetchPostandOut(query, 10)
 }
+buttonActivate('10', t10);
+
+
 // Task 11 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 2. Добавьте параметр name с вашим именем на латинице. Если все сделано верно, сервер пришлет строку hello ваше имя. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-11 результат. Запускаться функция должна по нажатию b-11. */
 
