@@ -14,6 +14,11 @@ function objToStr(obj) {
     str = `${www}${str}`;
     return str;
 }
+function objToStrPost(obj) {
+    let str = `${authKey}&`
+    str += new URLSearchParams(obj).toString();
+    return str;
+}
 
 function toOut(num, str) {
     let out = document.querySelector(`.out-${num}`);
@@ -30,7 +35,7 @@ function toFetchAndOut(query, output) {
 }
 
 function toFetchPostandOut(query, output) {
-    let request = objToStr(query).slice(1);
+    let request = objToStrPost(query);
     console.log(request)
     fetch(www, {
         method: 'POST',
@@ -38,7 +43,7 @@ function toFetchPostandOut(query, output) {
             //   'Content-Type': 'application/json'
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `${authKey}&action=1`
+        body: request
     })
         .then(data => data.text())
         .then(data => toOut(output, data))
@@ -160,7 +165,7 @@ buttonActivate(7, t7)
 function t8() {
     let query = {
         action: 8,
-        year: 2014
+        year: 1987
     }
 
     toFetchAndOut(query, 8)
@@ -208,70 +213,117 @@ buttonActivate('10', t10);
 
 function t11() {
 
-}
+    let query = {
+        action: 2,
+        name: 'Pavlo'
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 11)
+}
+buttonActivate(11, t11);
 
 // Task 12 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 3. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет сумму чисел. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-12 результат. Запускаться функция должна по нажатию b-12.*/
 
 function t12() {
 
-}
+    let query = {
+        action: 3,
+        num1: 3,
+        num2: 10
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 12)
+}
+buttonActivate(12, t12);
 
 // Task 13 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 4. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет случайное число в заданном диапазоне. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-13 результат. Запускаться функция должна по нажатию b-13.*/
 
 function t13() {
 
-}
+    let query = {
+        action: 4,
+        num1: 3,
+        num2: 10
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 13)
+}
+buttonActivate(13, t13);
 
 // Task 14 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 5. Если все сделано верно, сервер вернет текущее время и дату. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-14 результат. Запускаться функция должна по нажатию b-14.*/
 
 function t14() {
 
-}
+    let query = {
+        action: 5
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 14)
+}
+buttonActivate(14, t14);
 
 // Task 15============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 6. Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет большее число. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-15 результат. Запускаться функция должна по нажатию b-15. */
 
 function t15() {
 
-}
+    let query = {
+        action: 6,
+        num1: 3,
+        num2: 10
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 15)
+}
+buttonActivate(15, t15);
 
 // Task 16 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 7. Если все сделано верно, сервер случайную ссылку на изображение. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-16 результат. Запускаться функция должна по нажатию b-16. */
 
 function t16() {
 
-}
+    let query = {
+        action: 7,
 
-// ваше событие здесь!!!
+    }
+
+    toFetchPostandOut(query, 16)
+}
+buttonActivate(16, t16);
 
 // Task 17 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 8. В качестве параметра по очереди укажите year равный году вашего рождения. Если все правильно сервер вернет ваш возраст. Не забывайте указывать параметр auth (ключ в чате).Выведите в out-17 результат. Запускаться функция должна по нажатию b-17. */
 
 function t17() {
 
-}
+    let query = {
+        action: 8,
+        year: 1987
+    }
 
-// ваше событие здесь!!!
+    toFetchPostandOut(query, 17)
+}
+buttonActivate(17, t17);
 
 // Task 18 ============================================
 /*  Отправьте POST запрос (fetch) на сайт http://getpost.itgid.info/index2.php. В качестве action укажите 9. В качестве параметра по очереди укажите m = 1, d=1, y=1. Если все сделано верно, сервер возвратит дату или месяц или год. Не забывайте указывать параметр auth (ключ в чате). Выведите в out-18 результат. Запускаться функция должна по нажатию b-18. */
 
 function t18() {
 
+    let query = {
+        action: 9,
+        m: 1,
+        d: 1,
+        y: 1
+    }
+
+    toFetchPostandOut(query, 18)
+
 }
 
-// ваше событие здесь!!!
+buttonActivate(18, t18);
+
 
