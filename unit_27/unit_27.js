@@ -1,3 +1,27 @@
+let authKey = 'auth=7859d9d42a8834141d529577207c9596';
+
+let web = 'http://getpost.itgid.info/index2.php';
+
+function activeButton(x, y) {
+    let button = document.querySelector(`.b-${x}`);
+    button.onclick = y
+}
+
+function objToStr(obj) {
+    let result = `?${authKey}&`;
+    result += new URLSearchParams(obj).toString();
+    result = `${web}${result}`
+    return result;
+}
+
+function toOut (arr, outNum) {
+    let str = '';
+    arr.forEach(element => {
+        str += `${element}<br>`
+        
+    });
+    document.querySelector(`.out-${outNum}`).innerHTML = str;
+}
 
 // Task 1 ============================================
 /* 
@@ -8,9 +32,43 @@
 */
 
 function t1() {
+    
+    let query1 = {
+        action: 1,
+    }
+
+    query1 = objToStr(query1)
+
+    let query2 = {
+        action: 2,
+        name: 'pavlo'
+    }
+
+    query2 = objToStr(query2)
+
+    let promise1 = new Promise((resolve, reject) => {
+        fetch(query1)
+        .then(data => {
+            resolve(data.text())
+        })
+    })
+
+    let promise2 = new Promise((resolve, reject) => {
+        fetch(query2)
+        .then(data => {
+            resolve(data.text())
+        })
+    })
+
+    Promise.all([promise1, promise2])
+    .then(data => {
+        console.log(data);
+        toOut(data, 1)
+    })
 }
 
-// ваше событие здесь!!!
+
+activeButton(1, t1)
 
 // Task 2 ============================================
 /* 
