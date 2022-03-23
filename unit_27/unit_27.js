@@ -14,11 +14,11 @@ function objToStr(obj) {
     return result;
 }
 
-function toOut (arr, outNum) {
+function toOut(arr, outNum) {
     let str = '';
     arr.forEach(element => {
         str += `${element}<br>`
-        
+
     });
     document.querySelector(`.out-${outNum}`).innerHTML = str;
 }
@@ -32,7 +32,7 @@ function toOut (arr, outNum) {
 */
 
 function t1() {
-    
+
     let query1 = {
         action: 1,
     }
@@ -48,23 +48,27 @@ function t1() {
 
     let promise1 = new Promise((resolve, reject) => {
         fetch(query1)
-        .then(data => {
-            resolve(data.text())
-        })
+            .then(data => {
+                if (data.ok) {
+                    resolve(data.text())
+                } else {
+                    reject('query1 - ERROR')
+                }
+            })
     })
 
     let promise2 = new Promise((resolve, reject) => {
         fetch(query2)
-        .then(data => {
-            resolve(data.text())
-        })
+            .then(data => {
+                resolve(data.text())
+            })
     })
 
     Promise.all([promise1, promise2])
-    .then(data => {
-        console.log(data);
-        toOut(data, 1)
-    })
+        .then(data => {
+            console.log(data);
+            toOut(data, 1)
+        })
 }
 
 
@@ -84,10 +88,28 @@ activeButton(1, t1)
 */
 
 function t2() {
+    let query1 = {
+        action: 3,
+        num1: 5,
+        num2: 10
+    };
 
+    let query2 = {
+        action: 4,
+        num1: 1,
+        num2: 10
+    }
+
+    query1 = objToStr(query1);
+    query2 = objToStr(query2);
+
+    
+
+    // Promise.all([promise1, promise1])
+    //     .then(data => toOut(data, 2))
 }
 
-// ваше событие здесь!!!
+activeButton(2, t2)
 
 
 // Task 3 ============================================
