@@ -14,6 +14,24 @@ function objToStr(obj) {
     return result;
 }
 
+function newPromise(url, method = "GET") {
+    let promise = new Promise((resolve, reject) => {
+        fetch(url, {
+            method: method,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+        })
+        .then(data => {
+                resolve(data.text());
+            })
+
+    })
+    return promise
+}
+
+
+
 function toOut(arr, outNum) {
     let str = '';
     arr.forEach(element => {
@@ -46,23 +64,8 @@ function t1() {
 
     query2 = objToStr(query2)
 
-    let promise1 = new Promise((resolve, reject) => {
-        fetch(query1)
-            .then(data => {
-                if (data.ok) {
-                    resolve(data.text())
-                } else {
-                    reject('query1 - ERROR')
-                }
-            })
-    })
-
-    let promise2 = new Promise((resolve, reject) => {
-        fetch(query2)
-            .then(data => {
-                resolve(data.text())
-            })
-    })
+    let promise1 = newPromise(query1);
+    let promise2 = newPromise(query2);
 
     Promise.all([promise1, promise2])
         .then(data => {
@@ -84,7 +87,7 @@ activeButton(1, t1)
 диапазоне.</p>
 <p>Два запроса объедините с помощью promiseAll.
 Выведите в out-2 результат. Запускаться функция должна по нажатию b-2. </p>
-
+ 
 */
 
 function t2() {
@@ -103,10 +106,12 @@ function t2() {
     query1 = objToStr(query1);
     query2 = objToStr(query2);
 
-    
+    let p1 = newPromise(query1);
+    let p2 = newPromise(query2);
 
-    // Promise.all([promise1, promise1])
-    //     .then(data => toOut(data, 2))
+    
+    Promise.all([p1, p2])
+        .then(data => toOut(data, 2))
 }
 
 activeButton(2, t2)
@@ -126,11 +131,28 @@ activeButton(2, t2)
                  */
 
 function t3() {
+    let query1 = {
+        action: 5
+    }
+
+    let query2 = {
+        action: 6,
+        num1: 5,
+        num2: 15
+    }
+
+    query1 = objToStr(query1);
+    query2 = objToStr(query2);
+
+    let p1 = newPromise(query1);
+    let p2 = newPromise(query2);
+
+    Promise.all([p1, p2])
+        .then(data => toOut(data, 3))
 
 }
 
-// ваше событие здесь!!!
-
+activeButton(3, t3)
 
 // Task 4 ============================================
 /*  
@@ -142,12 +164,35 @@ function t3() {
 качестве параметра по очереди укажите year равный году вашего рождения. Если все правильно сервер вернет
 ваш возраст.</p>
 <p>Выведите в out-4 результат. Запускаться функция должна по нажатию b-4.</p>
-
+ 
 */
 
 function t4() {
 
+    console.log('t4')
+    let query1 = {
+        action: 7,
+    };
+
+    let query2 = {
+        action: 8,
+        year: 1987
+    };
+
+    query1 = objToStr(query1);
+    query2 = objToStr(query2);
+
+    let promise1 = newPromise(query1);
+    let promise2 = newPromise(query2);
+
+    Promise.all([promise1, promise2])
+        .then(data => toOut(data, 4))
+
 }
+
+activeButton(4, t4)
+
+
 
 // ваше событие здесь!!!
 
@@ -161,11 +206,35 @@ POST запрос на сайт http://getpost.itgid.info/index2.php. В кач�
 должна по нажатию b-5.</p>
 */
 
+
+
+
 function t5() {
+
+    let params1 = {
+        action: 1
+    };
+
+    let params2 = {
+        action: 2,
+        name: 'Pavlo'
+    }
+
+
+    params1 = objToStr(params1);
+    params2 = objToStr(params2)
+
+    let promise1 = newPromise(params1, 'POST')
+    let promise2 = newPromise(params2, 'POST')
+
+
+    Promise.all([promise1, promise2])
+    .then(data => toOut(data, 5))
 
 }
 
-// ваше событие здесь!!!
+activeButton(5, t5)
+
 
 // Task 6 ============================================
 /* 
@@ -183,10 +252,30 @@ function t5() {
 */
 
 function t6() {
+    let params1 = {
+        action:3,
+        num1: 10,
+        num2: 20
+    }
+
+    let params2 = {
+        action: 4,
+        num1: 10,
+        num2: 20
+    }
+
+    params1 = objToStr(params1);
+    params2 = objToStr(params2);
+
+    let promise1 = newPromise(params1, 'POST');
+    let promise2 = newPromise(params2, 'POST');
+
+    Promise.all([promise1, promise2])
+    .then(data => toOut(data, 6))
 
 }
 
-// ваше событие здесь!!!
+activeButton(6, t6)
 
 
 // Task 7 ============================================
@@ -198,12 +287,32 @@ function t6() {
 Добавьте параметр num1 и num2 содержащие числа. Если все сделано верно, сервер вернет большее число.</p>
 <p>Два запроса объедините с помощью promiseAll.
 Выведите в out-7 результат. Запускаться функция должна по нажатию b-7. </p>
-
+ 
 */
 
 function t7() {
 
+    let params1 = {
+        action: 5
+    }
+
+    let params2 = {
+        action: 6,
+        num1: 5,
+        num2: 15
+    }
+
+    params1 = objToStr(params1);
+    params2 = objToStr(params2);
+
+    let p1 = newPromise(params1, 'POST');
+    let p2 = newPromise(params2, 'POST');
+
+    Promise.all([p1, p2])
+    .then(response => toOut(response, 7));
 }
+
+activeButton(7, t7)
 
 // ваше событие здесь!!!
 
@@ -222,7 +331,25 @@ function t7() {
 
 function t8() {
 
+    let params1 = {
+        action: 7
+    };
+
+    let params2 = {
+        action: 8,
+        year: 1987
+    };
+
+    params1 = objToStr(params1);
+    params2 = objToStr(params2);
+
+    let p1 = newPromise(params1, 'POST');
+    let p2 = newPromise(params2, 'POST');
+
+    Promise.all([p1, p2])
+    .then( response => toOut(response, 8))
+
 }
 
-// ваше событие здесь!!!
+activeButton(8, t8)
 
