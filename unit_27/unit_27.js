@@ -22,8 +22,11 @@ function newPromise(url, method = "GET") {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
         })
-        .then(data => {
+            .then(data => {
                 resolve(data.text());
+            })
+            .catch(error => {
+                reject(error)
             })
 
     })
@@ -109,7 +112,7 @@ function t2() {
     let p1 = newPromise(query1);
     let p2 = newPromise(query2);
 
-    
+
     Promise.all([p1, p2])
         .then(data => toOut(data, 2))
 }
@@ -229,7 +232,7 @@ function t5() {
 
 
     Promise.all([promise1, promise2])
-    .then(data => toOut(data, 5))
+        .then(data => toOut(data, 5))
 
 }
 
@@ -253,7 +256,7 @@ activeButton(5, t5)
 
 function t6() {
     let params1 = {
-        action:3,
+        action: 3,
         num1: 10,
         num2: 20
     }
@@ -271,7 +274,7 @@ function t6() {
     let promise2 = newPromise(params2, 'POST');
 
     Promise.all([promise1, promise2])
-    .then(data => toOut(data, 6))
+        .then(data => toOut(data, 6))
 
 }
 
@@ -309,7 +312,7 @@ function t7() {
     let p2 = newPromise(params2, 'POST');
 
     Promise.all([p1, p2])
-    .then(response => toOut(response, 7));
+        .then(response => toOut(response, 7));
 }
 
 activeButton(7, t7)
@@ -347,7 +350,7 @@ function t8() {
     let p2 = newPromise(params2, 'POST');
 
     Promise.all([p1, p2])
-    .then( response => toOut(response, 8))
+        .then(response => toOut(response, 8))
 
 }
 
